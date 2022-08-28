@@ -17,8 +17,15 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
+            - '../src/Model/'
+            - '../src/Serializer/Normalizer/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+#    App\Serializer\Normalizer\:
+#        resource: '../src/Serializer/Normalizer/'
+#        tags:
+#            - { name: serializer.normalizer, priority: 30 }
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
