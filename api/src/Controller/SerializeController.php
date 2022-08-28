@@ -7,7 +7,9 @@ use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class SerializeController extends AbstractController
@@ -31,9 +33,11 @@ class SerializeController extends AbstractController
         $personal->name = 'willy';
         $personal->age = 12;
         $personal->date = new DateTime('now');
-        $response = $this->serializer->serialize($personal, 'json',['groups' =>'date', DateTimeNormalizer::FORMAT_KEY => 'Y-m-d H:i']);
+        $personal->array = [];
+        $response = $this->serializer->serialize($personal, 'json',['groups' =>'all', DateTimeNormalizer::FORMAT_KEY => 'Y-m-d H:i']);
+        $deserialize = $this->serializer->deserialize($response, Personal::class, 'json',['groups' =>'all']);
 
-        dd($response);
+        dd($deserialize);
 
         return $this->json(json_encode('dracon'));
     }

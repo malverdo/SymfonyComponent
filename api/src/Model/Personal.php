@@ -31,4 +31,18 @@ class Personal
      * @Groups({"date","all"})
      */
     public $date;
+
+    /**
+     * @var Personal
+     * @SerializedName("personal_personal")
+     * @Groups({"personal","all"})
+     */
+    public $personal;
+
+    /**
+     * @var array
+     * @SerializedName("array_personal")
+     * @Groups({"array","all"})
+     */
+    public $array;
 }
