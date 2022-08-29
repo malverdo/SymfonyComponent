@@ -16,11 +16,16 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
             - '../src/Model/'
             - '../src/Serializer/Normalizer/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+#    App\Validator\ContainsAlphanumeric:
+#        tags: ['validator.constraint']
+#
+#    App\Validator\ContainsAlphanumericValidator:
+#        tags: ['validator.constraint_validator']
 
 #    App\Serializer\Normalizer\:
 #        resource: '../src/Serializer/Normalizer/'
